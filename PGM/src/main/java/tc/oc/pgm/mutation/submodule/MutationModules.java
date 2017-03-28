@@ -16,6 +16,9 @@ import java.time.Duration;
 import tc.oc.commons.bukkit.inventory.ArmorType;
 import tc.oc.commons.bukkit.inventory.Slot;
 import tc.oc.commons.bukkit.item.ItemUtils;
+import tc.oc.pgm.blitz.BlitzMatchModuleImpl;
+import tc.oc.pgm.blitz.BlitzProperties;
+import tc.oc.pgm.blitz.Lives;
 import tc.oc.pgm.doublejump.DoubleJumpKit;
 import tc.oc.pgm.kits.FreeItemKit;
 import tc.oc.pgm.kits.Kit;
@@ -26,6 +29,17 @@ import tc.oc.pgm.match.Match;
 import tc.oc.pgm.match.ParticipantState;
 
 public class MutationModules {
+
+    public static class Blitz extends MutationModule {
+        public Blitz(Match match) {
+            super(match);
+        }
+
+        @Override
+        public void enable(boolean late) {
+            match.needMatchModule(BlitzMatchModuleImpl.class).activate(BlitzProperties.create(match, 1, Lives.Type.INDIVIDUAL));
+        }
+    }
 
     public static class Explosives extends KitMutationModule {
         public static final Float MULTIPLIER = 1.75f;

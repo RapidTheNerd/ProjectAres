@@ -15,7 +15,7 @@ import static tc.oc.pgm.mutation.submodule.MutationModules.*;
 
 public enum Mutation {
 
-    BLITZ       (null,               false),
+    BLITZ       (Blitz.class,        true),
     UHC         (null,               false),
     EXPLOSIVES  (Explosives.class,   true),
     NO_FALL     (null,               false),
